@@ -1,0 +1,3 @@
+*.crt
+*secret.yaml
+!*sealed-secret.yaml
