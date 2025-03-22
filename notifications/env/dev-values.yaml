@@ -1,2 +1,2 @@
 github:
-  workflow-file-name: github-actions-demo
+  workflowFileName: github-actions-demo

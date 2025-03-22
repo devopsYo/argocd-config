@@ -9,7 +9,7 @@ data:
     webhook:
       github:
         method: POST
-        path: /repos/devopsYo/apigee/actions/workflows/{{ .Values.github.workflow-file-name }}/dispatches
+        path: /repos/devopsYo/apigee/actions/workflows/{{ .Values.github.workflowFileName }}/dispatches
         body: |
           {
             "event_type": "webhook",
