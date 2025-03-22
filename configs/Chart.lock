@@ -1,0 +1,6 @@
+dependencies:
+- name: argo-cd
+  repository: oci://dbank-cmdo-devops-helm-ghcr-remote.jfrog.io/argoproj/argo-helm
+  version: 7.7.10
+digest: sha256:da38de0514185d1f7d5f5b8193e446cdb41207969068dc77633161e17efc4205
+generated: "2024-12-20T09:02:29.4634758+02:00"

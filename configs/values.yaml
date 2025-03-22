@@ -1,0 +1,22 @@
+global:
+  image:
+    tag: "v2.6.6"
+
+server:
+  extraArgs:
+  - --insecure
+  env:
+    - name: TEST
+      value: test
+
+repoServer:
+  env:
+    - name: TEST
+      value: test
+#configs:
+#  cm:
+#    accounts:
+#      yoel: "login"
+#  rbac:
+#    g, yoel, role:readonly
+        
