@@ -1,2 +1,3 @@
 github:
   workflowFileName: github-actions-demo
+swagger_app_name: "{{ .app.metadata.name }}"

@@ -14,7 +14,7 @@ data:
           {
             "ref": "main",
             "inputs": {
-              "swagger_app_name": "{{ .app.metadata.name }}"
+              "swagger_app_name": {{ .Values.swagger_app_name }}
             }
           }
   trigger.on-sync-succeeded: |
