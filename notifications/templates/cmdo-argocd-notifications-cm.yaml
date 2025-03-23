@@ -12,10 +12,9 @@ data:
         path: /repos/devopsYo/apigee/actions/workflows/{{ .Values.github.workflowFileName }}/dispatches
         body: |
           {
-            "event_type": "webhook",
-            "client_payload": {
-                "unit": false,
-                "integration": true
+            "ref": "main",
+            "inputs": {
+              "swagger_app_name": "{{.app.metadata.name}}"
             }
           }
   trigger.on-sync-succeeded: |
