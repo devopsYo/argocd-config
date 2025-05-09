@@ -19,7 +19,7 @@ data:
           }
   trigger.on-sync-succeeded: |
     - description: Application syncing has succeeded
-      send: [app-sync-succeeded, github-action]
+      send: [github-action]
       when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
 kind: ConfigMap
 metadata:
