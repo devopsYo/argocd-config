@@ -17,10 +17,10 @@ data:
               "swagger_app_name": "{{ .Values.swagger_app_name }}"
             }
           }
-  trigger.on-sync-succeeded: |
-    - description: Application syncing has succeeded
-      send: [github-action]
-      when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
+  #trigger.on-sync-succeeded: |
+  #  - description: Application syncing has succeeded
+  #    send: [github-action]
+  #    when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
 kind: ConfigMap
 metadata:
   name: cmdo-argocd-notifications-cm
