@@ -5,6 +5,11 @@ data:
     headers: #optional headers
     - name: Authorization
       value: $pat-github
+  service.webhook.argo-workflow: |
+    url: http://argo-workflows-server.argo.svc.cluster.local:2746/api/v1/workflows/argo
+    headers: #optional headers
+    - name: Content-Type
+      value: application/json
   template.github-action: |
     webhook:
       github:
@@ -17,9 +22,39 @@ data:
               "swagger_app_name": "{{ .Values.swagger_app_name }}"
             }
           }
+  template.argo-workflow-submit: |
+    webhook:
+      argo-workflow:
+        method: POST
+        body: |
+          {
+            "namespace": "argo",
+            "workflow": {
+              "metadata": {
+                "generateName": "post-deploy-github-action-template-",
+                "namespace": "argo",
+                "labels": {
+                  "workflows.argoproj.io/workflow-template": "post-deploy-github-action-template"
+                }
+              },
+              "spec": {
+                "workflowTemplateRef": {
+                  "name": "post-deploy-github-action-template"
+                },
+                "arguments": {
+                  "parameters": [
+                    {
+                      "name": "app-name",
+                      "value": "{{ .app.metadata.name }}"
+                    }
+                  ]
+                }
+              }
+            }
+          }
   trigger.on-sync-succeeded: |
     - description: Application syncing has succeeded
-      send: [github-action]
+      send: [github-action, argo-workflow-submit]
       when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
 kind: ConfigMap
 metadata:
