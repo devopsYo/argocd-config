@@ -45,7 +45,7 @@ data:
                   "parameters": [
                     {
                       "name": "app-name",
-                      "value": "{{ .app.metadata.name }}"
+                      "value": "{{ .Values.swagger_app_name }}"
                     }
                   ]
                 }
