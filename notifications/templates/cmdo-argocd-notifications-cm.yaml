@@ -53,7 +53,7 @@ data:
             }
           }
   trigger.on-sync-succeeded: |
-    - description: Application syncing has succeeded
+    - description: Application syncing has succeeded test
       send: [github-action, argo-workflow-submit]
       when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
 kind: ConfigMap
